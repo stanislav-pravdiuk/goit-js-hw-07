@@ -4,7 +4,9 @@ const imageContainer = document.querySelector('.gallery');
 const cardsMarkup = createCardsMarkup(galleryItems);
 
 imageContainer.insertAdjacentHTML('afterbegin', cardsMarkup);
-console.log(createCardsMarkup(galleryItems))
+
+
+imageContainer.addEventListener('click', onImageContainerClick);
 
 function createCardsMarkup(galleryItems) {
     return galleryItems.map(({original, preview, description}) => {
@@ -21,6 +23,15 @@ function createCardsMarkup(galleryItems) {
     </div>
     `
     }).join('');
-}
+};
+
+function onImageContainerClick(e) { 
+    
+    if (!e.target.classList.contains('gallery__image')) {
+        return;
+    };
+
+    console.log(e.target);
+};
 
 // console.log(galleryItems);
