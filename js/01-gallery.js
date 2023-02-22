@@ -25,13 +25,16 @@ function createCardsMarkup(galleryItems) {
     }).join('');
 };
 
-function onImageContainerClick(e) { 
-    
+
+function onImageContainerClick(e) {
+    e.preventDefault();
     if (!e.target.classList.contains('gallery__image')) {
         return;
     };
 
-    console.log(e.target);
-};
+    const instance = basicLightbox.create(`
+    <img src="${e.target.dataset.source}" width="800" height="600">
+`)
 
-// console.log(galleryItems);
+instance.show()
+};
