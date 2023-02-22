@@ -39,7 +39,6 @@ function onImageContainerClick(e) {
     instance.show()
     
     function onEscKeyPress(e) {
-    console.log(e)
     instance.close()
 }
 };

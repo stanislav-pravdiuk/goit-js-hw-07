@@ -24,20 +24,10 @@ function createCardsMarkup(galleryItems) {
 function onImageContainerClick(e) {
     e.preventDefault();
 
-    window.addEventListener('keydown', onEscKeyPress);
-
     if (!e.target.classList.contains('gallery__image')) {
         return;
     };
 
-    const instance = basicLightbox.create(`
-    <img src="${e.target.dataset.source}" width="800" height="600">
-`)
-
-    instance.show()
-    
-    function onEscKeyPress(e) {
-    console.log(e)
-    instance.close()
-}
+    let gallery = new SimpleLightbox('.gallery a');
+gallery.on('show.simplelightbox');
 };
