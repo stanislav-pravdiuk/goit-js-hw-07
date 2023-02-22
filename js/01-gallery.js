@@ -4,8 +4,6 @@ const imageContainer = document.querySelector('.gallery');
 const cardsMarkup = createCardsMarkup(galleryItems);
 
 imageContainer.insertAdjacentHTML('afterbegin', cardsMarkup);
-
-
 imageContainer.addEventListener('click', onImageContainerClick);
 
 function createCardsMarkup(galleryItems) {
@@ -25,9 +23,11 @@ function createCardsMarkup(galleryItems) {
     }).join('');
 };
 
-
 function onImageContainerClick(e) {
     e.preventDefault();
+
+    window.addEventListener('keydown', onEscKeyPress);
+
     if (!e.target.classList.contains('gallery__image')) {
         return;
     };
@@ -36,5 +36,10 @@ function onImageContainerClick(e) {
     <img src="${e.target.dataset.source}" width="800" height="600">
 `)
 
-instance.show()
+    instance.show()
+    
+    function onEscKeyPress(e) {
+    console.log(e)
+    instance.close()
+}
 };
