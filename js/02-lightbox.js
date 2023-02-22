@@ -28,6 +28,12 @@ function onImageContainerClick(e) {
         return;
     };
 
-    let gallery = new SimpleLightbox('.gallery a');
+    let gallery = new SimpleLightbox(".gallery a", {
+    captionSelector: 'img',
+    captionsData: 'alt',
+    captionPosition: 'bottom',
+    captionDelay: 250,
+    scrollZoom: false,
+    });
 gallery.on('show.simplelightbox');
 };
