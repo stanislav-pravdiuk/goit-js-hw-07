@@ -5,7 +5,6 @@ const imageContainer = document.querySelector('.gallery');
 const cardsMarkup = createCardsMarkup(galleryItems);
 
 imageContainer.insertAdjacentHTML('afterbegin', cardsMarkup);
-imageContainer.addEventListener('click', onImageContainerClick);
 
 function createCardsMarkup(galleryItems) {
     return galleryItems.map(({original, preview, description}) => {
@@ -21,19 +20,11 @@ function createCardsMarkup(galleryItems) {
     }).join('');
 };
 
-function onImageContainerClick(e) {
-    e.preventDefault();
-
-    if (!e.target.classList.contains('gallery__image')) {
-        return;
-    };
-
-    let gallery = new SimpleLightbox(".gallery a", {
+new SimpleLightbox(".gallery a", {
     captionSelector: 'img',
     captionsData: 'alt',
     captionPosition: 'bottom',
     captionDelay: 250,
     scrollZoom: false,
-    });
-gallery.on('show.simplelightbox');
-};
+});
+
